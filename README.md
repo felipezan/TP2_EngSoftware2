@@ -17,3 +17,8 @@ Este sistema está sendo desenvolvido seguindo os princípios do TDD:
 1. Escrita de testes antes da implementação do código.
 2. Implementação do código mínimo necessário para passar nos testes.
 3. Refatoração do código mantendo a passagem nos testes.
+
+## Testes
+O projeto inclui: 
+- 15 testes unitários cobrindo todas as funcionalidades básicas.
+- 5 testes de integração para validar a interação entre diferentes componentes do sistema.
