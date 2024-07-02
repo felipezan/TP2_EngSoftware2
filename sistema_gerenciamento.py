@@ -69,4 +69,11 @@ class GerenciadorUsuarios:
 
     # metodo que valida o formato do email
     def validarEmail(self, email):
-        padrao = r'^[\w\.-]+@[\w\.-]+\.\w+$'        
+        padrao = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        return re.match(padrao, email) is not None
+
+    # metodo que autentica um usuario
+    def autenticarUsuario(self, email, senha):
+        if email in self.usuarios and self.usuarios[email]["senha"] == senha:
+            return True
+        return False    
