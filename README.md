@@ -13,7 +13,7 @@ Este projeto é um sistema simples de gerenciamento de estoque e vendas, desenvo
 - Operações autenticadas (vendas e relatórios)
 
 ## Estrutura do Projeto
-O projeto possui três classes:
+O projeto possui as três classes principais abaixo em sistema_gerenciamento e um main como inicio do programa:
 1. `GerenciadorEstoque`: Gerencia operações relacionadas ao estoque de produtos.
 2. `GerenciadorUsuarios`: Lida com a gestão e autenticação de usuários.
 3. `SistemaGerenciamento`: Integra as funcionalidades de estoque e usuários.
