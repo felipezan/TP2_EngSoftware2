@@ -55,3 +55,18 @@ class GerenciadorEstoque:
         vendas_periodo = [venda for venda in self.vendas 
                           if data_inicio <= venda["data"] <= data_fim]
         return vendas_periodo
+
+class GerenciadorUsuarios:
+    def __init__(self):
+        self.usuarios = {}
+
+    # metodo que adiciona um novo usuario se o email for valido e unico
+    def adicionarUsuario(self, nome, email, senha):
+        if self.validarEmail(email) and email not in self.usuarios:
+            self.usuarios[email] = {"nome": nome, "senha": senha}
+            return True
+        return False
+
+    # metodo que valida o formato do email
+    def validarEmail(self, email):
+        padrao = r'^[\w\.-]+@[\w\.-]+\.\w+$'        
