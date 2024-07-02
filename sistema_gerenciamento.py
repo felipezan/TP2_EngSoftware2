@@ -26,3 +26,32 @@ class GerenciadorEstoque:
             self.produtos[codigo]["quantidade"] = nova_quantidade
             return True
         return False        
+
+   # metodo que retorna informacoes de um produto
+    def obterProduto(self, codigo):
+        return self.produtos.get(codigo)
+
+    # metodo que lista todos os produtos no estoque
+    def listarProdutos(self):
+        return list(self.produtos.values())
+
+    # metodo que realiza uma venda se houver estoque suficiente
+    def realizarVenda(self, codigo, quantidade):
+        if codigo in self.produtos and self.produtos[codigo]["quantidade"] >= quantidade:
+            produto = self.produtos[codigo]
+            valor_total = produto["preco"] * quantidade
+            self.produtos[codigo]["quantidade"] -= quantidade
+            self.vendas.append({
+                "codigo": codigo,
+                "quantidade": quantidade,
+                "valor_total": valor_total,
+                "data": datetime.datetime.now()
+            })
+            return valor_total
+        return None
+
+    # metodo que gera um relatorio de vendas para um período especifico
+    def obterRelatorioVendas(self, data_inicio, data_fim):
+        vendas_periodo = [venda for venda in self.vendas 
+                          if data_inicio <= venda["data"] <= data_fim]
+        return vendas_periodo
