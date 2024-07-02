@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime, timedelta
-from sistema_gerenciamento import GerenciadorEstoque, GerenciadorUsuarios, SistemaGerenciamento
+from src.sistema_gerenciamento import GerenciadorEstoque, GerenciadorUsuarios, SistemaGerenciamento
 
 class TestGerenciadorEstoque(unittest.TestCase):
     def setUp(self):

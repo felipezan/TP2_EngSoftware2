@@ -32,4 +32,30 @@ Este sistema está sendo desenvolvido seguindo os princípios do TDD:
 - Uso de `setUp` pra preparar o ambiente de teste
 - Cobertura abrangente de casos de uso, incluindo cenários de erro
 
+## Testes
+O projeto inclui: 
+- 15 testes unitários cobrindo todas as funcionalidades básicas.
+- 5 testes de integração para validar a interação entre componentes do sistema.
+
+### Executando os Testes
+Pra executar os testes, use os seguintes comandos:
+
+```
+python -m unittest discover -v
+```
+
+## Como executar os Testes localmente
+
+1. Clone o repo:
+   ```
+   git clone https://github.com/felipezan/TP2_EngSoftware2.git
+   ```
+2. Vá até a raiz:
+   ```
+   cd TP2_EngSoftware2
+   ```
+3. Execute os testes:
+   ```
+   python -m unittest discover -v
+   ```
 
