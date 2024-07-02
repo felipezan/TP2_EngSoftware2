@@ -112,3 +112,14 @@ class TestSistemaGerenciamento(unittest.TestCase):
     def test_realizar_venda_autenticada_com_sucesso(self):
         resultado = self.sistema.realizarVendaAutenticada("joao@email.com", "senha123", "001", 2)
         self.assertEqual(resultado, 20.0)
+
+    def test_realizar_venda_autenticada_usuario_invalido(self):
+        resultado = self.sistema.realizarVendaAutenticada("joao@email.com", "senhaerrada", "001", 2)
+        self.assertIsNone(resultado)
+
+    def test_gerar_relatorio_vendas_autenticado_com_sucesso(self):
+        self.sistema.realizarVendaAutenticada("joao@email.com", "senha123", "001", 2)
+        data_inicio = datetime.now() - timedelta(days=1)
+        data_fim = datetime.now() + timedelta(days=1)
+        relatorio = self.sistema.gerarRelatorioVendasAutenticado("joao@email.com", "senha123", data_inicio, data_fim)
+        self.assertEqual(len(relatorio), 1)
