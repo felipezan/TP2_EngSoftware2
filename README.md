@@ -11,3 +11,9 @@ Este projeto é um sistema simples de gerenciamento de estoque e vendas, desenvo
 - Geração de relatórios de vendas
 - Gerenciamento de usuários (adicionar, autenticar)
 - Operações autenticadas (vendas e relatórios)
+
+## Desenvolvimento Baseado em TDD
+Este sistema está sendo desenvolvido seguindo os princípios do TDD:
+1. Escrita de testes antes da implementação do código.
+2. Implementação do código mínimo necessário para passar nos testes.
+3. Refatoração do código mantendo a passagem nos testes.
