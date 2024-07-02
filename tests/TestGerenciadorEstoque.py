@@ -44,7 +44,7 @@ class TestGerenciadorEstoque(unittest.TestCase):
     def test_obter_produto_inexistente(self):
         produto = self.estoque.obterProduto("999")
         self.assertIsNone(produto)
-        
+
     def test_listar_produtos(self):
         self.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
         self.estoque.adicionarProduto("002", "Produto B", 15.0, 3)
@@ -75,3 +75,20 @@ class TestGerenciadorEstoque(unittest.TestCase):
         self.assertEqual(relatorio[0]["codigo"], "001")
         self.assertEqual(relatorio[0]["quantidade"], 2)
         self.assertEqual(relatorio[0]["valor_total"], 20.0)
+
+class TestGerenciadorUsuarios(unittest.TestCase):
+    def setUp(self):
+        self.usuarios = GerenciadorUsuarios()
+
+    def test_adicionar_usuario_valido(self):
+        resultado = self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
+        self.assertTrue(resultado)
+
+    def test_adicionar_usuario_email_invalido(self):
+        resultado = self.usuarios.adicionarUsuario("João", "joao@email", "senha123")
+        self.assertFalse(resultado)
+
+    def test_adicionar_usuario_email_duplicado(self):
+        self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
+        resultado = self.usuarios.adicionarUsuario("Maria", "joao@email.com", "outrasenha")
+        self.assertFalse(resultado)
