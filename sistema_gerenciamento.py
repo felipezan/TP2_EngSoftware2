@@ -77,3 +77,21 @@ class GerenciadorUsuarios:
         if email in self.usuarios and self.usuarios[email]["senha"] == senha:
             return True
         return False    
+
+
+class SistemaGerenciamento:
+    def __init__(self):
+        self.estoque = GerenciadorEstoque()
+        self.usuarios = GerenciadorUsuarios()
+
+    # metodo que realiza uma venda apenas se o usuario estiver autenticado
+    def realizarVendaAutenticada(self, email, senha, codigo_produto, quantidade):
+        if self.usuarios.autenticarUsuario(email, senha):
+            return self.estoque.realizarVenda(codigo_produto, quantidade)
+        return None
+
+    # metodo que gera um relatorio de vendas apenas se o usuario estiver autenticado
+    def gerarRelatorioVendasAutenticado(self, email, senha, data_inicio, data_fim):
+        if self.usuarios.autenticarUsuario(email, senha):
+            return self.estoque.obterRelatorioVendas(data_inicio, data_fim)
+        return None        
