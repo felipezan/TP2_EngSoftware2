@@ -92,3 +92,13 @@ class TestGerenciadorUsuarios(unittest.TestCase):
         self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
         resultado = self.usuarios.adicionarUsuario("Maria", "joao@email.com", "outrasenha")
         self.assertFalse(resultado)
+
+    def test_autenticar_usuario_valido(self):
+        self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
+        resultado = self.usuarios.autenticarUsuario("joao@email.com", "senha123")
+        self.assertTrue(resultado)
+
+    def test_autenticar_usuario_invalido(self):
+        self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
+        resultado = self.usuarios.autenticarUsuario("joao@email.com", "senhaerrada")
+        self.assertFalse(resultado)
