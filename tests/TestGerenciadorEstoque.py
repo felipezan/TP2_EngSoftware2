@@ -44,12 +44,34 @@ class TestGerenciadorEstoque(unittest.TestCase):
     def test_obter_produto_inexistente(self):
         produto = self.estoque.obterProduto("999")
         self.assertIsNone(produto)
-
+        
     def test_listar_produtos(self):
         self.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
         self.estoque.adicionarProduto("002", "Produto B", 15.0, 3)
         produtos = self.estoque.listarProdutos()
         self.assertEqual(len(produtos), 2)
         self.assertIn({"nome": "Produto A", "preco": 10.0, "quantidade": 5}, produtos)
-        self.assertIn({"nome": "Produto B", "preco": 15.0, "quantidade": 3}, produtos)        
+        self.assertIn({"nome": "Produto B", "preco": 15.0, "quantidade": 3}, produtos)
 
+    def test_realizar_venda_com_estoque_suficiente(self):
+        self.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
+        resultado = self.estoque.realizarVenda("001", 3)
+        self.assertEqual(resultado, 30.0)
+        self.assertEqual(self.estoque.obterProduto("001")["quantidade"], 2)
+
+    def test_realizar_venda_com_estoque_insuficiente(self):
+        self.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
+        resultado = self.estoque.realizarVenda("001", 6)
+        self.assertIsNone(resultado)
+        self.assertEqual(self.estoque.obterProduto("001")["quantidade"], 5)
+
+    def test_obter_relatorio_vendas(self):
+        self.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
+        self.estoque.realizarVenda("001", 2)
+        data_inicio = datetime.now() - timedelta(days=1)
+        data_fim = datetime.now() + timedelta(days=1)
+        relatorio = self.estoque.obterRelatorioVendas(data_inicio, data_fim)
+        self.assertEqual(len(relatorio), 1)
+        self.assertEqual(relatorio[0]["codigo"], "001")
+        self.assertEqual(relatorio[0]["quantidade"], 2)
+        self.assertEqual(relatorio[0]["valor_total"], 20.0)
