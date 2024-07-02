@@ -1,4 +1,4 @@
-from src.sistema_gerenciamento import SistemaGerenciamento
+from sistema_gerenciamento import SistemaGerenciamento
 from datetime import datetime, timedelta
 
 # metodo que inicializa o sistema
