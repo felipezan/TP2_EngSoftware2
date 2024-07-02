@@ -12,6 +12,12 @@ Este projeto é um sistema simples de gerenciamento de estoque e vendas, desenvo
 - Gerenciamento de usuários (adicionar, autenticar)
 - Operações autenticadas (vendas e relatórios)
 
+## Estrutura do Projeto
+O projeto possui três classes:
+1. `GerenciadorEstoque`: Gerencia operações relacionadas ao estoque de produtos.
+2. `GerenciadorUsuarios`: Lida com a gestão e autenticação de usuários.
+3. `SistemaGerenciamento`: Integra as funcionalidades de estoque e usuários.
+
 ## Desenvolvimento Baseado em TDD
 Este sistema está sendo desenvolvido seguindo os princípios do TDD:
 1. Escrita de testes antes da implementação do código.
