@@ -102,3 +102,13 @@ class TestGerenciadorUsuarios(unittest.TestCase):
         self.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
         resultado = self.usuarios.autenticarUsuario("joao@email.com", "senhaerrada")
         self.assertFalse(resultado)
+
+class TestSistemaGerenciamento(unittest.TestCase):
+    def setUp(self):
+        self.sistema = SistemaGerenciamento()
+        self.sistema.usuarios.adicionarUsuario("João", "joao@email.com", "senha123")
+        self.sistema.estoque.adicionarProduto("001", "Produto A", 10.0, 5)
+
+    def test_realizar_venda_autenticada_com_sucesso(self):
+        resultado = self.sistema.realizarVendaAutenticada("joao@email.com", "senha123", "001", 2)
+        self.assertEqual(resultado, 20.0)
