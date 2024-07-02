@@ -2,6 +2,8 @@ import datetime
 import re
 
 class GerenciadorEstoque:
+
+    # metodo construtor
     def __init__(self):
         self.produtos = {}
         self.vendas = []
@@ -57,6 +59,8 @@ class GerenciadorEstoque:
         return vendas_periodo
 
 class GerenciadorUsuarios:
+
+    # metodo construtor
     def __init__(self):
         self.usuarios = {}
 
@@ -80,6 +84,8 @@ class GerenciadorUsuarios:
 
 
 class SistemaGerenciamento:
+
+    # metodo construtor
     def __init__(self):
         self.estoque = GerenciadorEstoque()
         self.usuarios = GerenciadorUsuarios()
